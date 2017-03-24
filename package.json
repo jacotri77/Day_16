@@ -2,5 +2,7 @@
   "name": "Day_16",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "git@github.com:jacotri77/Day_16.git",
+  "author": "Erik Jacobsen <slowerthanyou@gmail.com>"
 }

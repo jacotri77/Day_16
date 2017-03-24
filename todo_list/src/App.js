@@ -1,21 +1,54 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+
+const App = React.createClass({
+
+getInitialState: function(){
+  return{
+  list: [],
+  text: ''
+
   }
+},
+
+handleChange: function(e){
+  this.setState({
+    text: e.target.value
+  })
+},
+
+handleSubmit: function(e){
+  e.preventDefault(),
+  this.setState({   
+  list:[this.state.text, ...this.state.list],
+  text: ''
+  })
+},
+removeChore: function(e){
+  this.setState({
+
+  })
 }
+
+ 
+render: function(){
+  return (
+    <div className="biggurn">
+      <h1> todos </h1>
+      <form onSubmit={this.handleSubmit} id="honey">
+        <input value={this.state.text} type="text" id="words" onChange={this.handleChange} placeholder="What needs to be done?" />
+          <ul className="todoitems">
+            {this.state.list.map(function(list){
+              return <li><input type="checkbox" />{list}</li>
+              }) }
+          </ul>
+      </form>
+    </div>
+
+    )
+  }
+
+})
 
 export default App;
