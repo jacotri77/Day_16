@@ -4,8 +4,6 @@ import './index.css';
 
 const UnOrdered = React.createClass({
 
-
-
 render: function(){
 
  return(
@@ -20,5 +18,6 @@ render: function(){
 }
 })
 	export default UnOrdered;
+
 
 	

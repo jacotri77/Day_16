@@ -13,7 +13,5 @@ render: function(){
     )
   }
 
-
-
 })
 	export default Header;

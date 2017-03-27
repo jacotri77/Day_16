@@ -5,13 +5,14 @@ import Buttons from './buttons.js'
 
 
 const App = React.createClass({
+  
 
 getInitialState: function(){
-  return{
-  list: [],
-  complete: false,
-  text: ''
-
+    return{ 
+      completed: false,
+      text: '',
+      list: [],
+      
   }
 },
 
@@ -26,8 +27,8 @@ handleSubmit: function(e){
   this.setState({   
   list:[this.state.text, ...this.state.list],
   text: ''
+  
   })
-
 },
 
 handleClick: function(e){
@@ -40,15 +41,19 @@ handleClick: function(e){
   })
 },
 
-greyOut: function(e){
+greyOut: function(list){
+  this.state.list.filter(function (list){
+      completed: !this.state.completed
+      }),
   this.setState({
-    complete: !this.state.complete
-
-  })
+    list: !this.state.list
+    
+     }) 
 },
 
 render: function(){
-  var listStyles = {'textDecoration': this.state.complete ? 'line-through' : ''}
+  var listStyles = {'textDecoration': this.state.completed ? 'line-through' : ''}
+
   return (
     <div className="biggurn">
       <h1> todos </h1>
@@ -57,8 +62,9 @@ render: function(){
        </form>
           <ul className="todoitems">
             {this.state.list.map(function(list){
-              return <li style={listStyles} ><input type="checkbox" defaultChecked={this.state.complete} ref="complete" onChange={this.greyOut}/>{list}<button onClick={this.handleClick} className="bigX">X</button></li>
-              }.bind(this))}
+              return <li style={listStyles} key={list} id="listStyles"><input type="checkbox" defaultChecked={this.state.completed} ref="complete" onChange={this.greyOut}/>{list}<button onClick={this.handleClick} className="bigX">X</button></li>
+              }.bind(this))} 
+
           </ul>
           <Buttons />
     </div>
@@ -67,5 +73,6 @@ render: function(){
   }
 
 })
+
 
 export default App;
