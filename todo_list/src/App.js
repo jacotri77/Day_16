@@ -11,8 +11,8 @@ getInitialState: function(){
     return{ 
       completed: false,
       text: '',
-      list: [],
-      
+      list: []
+  
   }
 },
 
@@ -26,9 +26,11 @@ handleSubmit: function(e){
   e.preventDefault(),
   this.setState({   
   list:[this.state.text, ...this.state.list],
-  text: ''
+  text: '',
+  id:list.id
   
   })
+
 },
 
 handleClick: function(e){
@@ -41,14 +43,15 @@ handleClick: function(e){
   })
 },
 
-greyOut: function(list){
-  this.state.list.filter(function (list){
-      completed: !this.state.completed
-      }),
+greyOut: function(e){
   this.setState({
-    list: !this.state.list
+    list: this.state.list.filter(function (list){
+    return {
+      completed: !this.state.completed
+    }
     
      }) 
+  })
 },
 
 render: function(){
